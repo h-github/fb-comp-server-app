@@ -41,7 +41,7 @@ export default (io: Server) => {
     socket.on("message", (username: string, body: string) => {
       const message: IMessage = {
         id: uuidv4(),
-        time: new Date(),
+        created: new Date().toUTCString(),
         username,
         body,
       };

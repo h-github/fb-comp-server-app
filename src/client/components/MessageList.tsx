@@ -32,18 +32,18 @@ const MessageList = ({ socket }) => {
     <div className="message-list">
       {messages
         .toSet()
-        .sortBy((message: IMessage) => message.time)
+        .sortBy((message: IMessage) => message.created)
         .map((message: IMessage) => (
           <div
             key={message.id}
             className="message-list--message-container row no-margin"
-            title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
+            title={`Sent at ${new Date(message.created).toLocaleTimeString()}`}
           >
             <span className="message-list--user col-lg-3">{`${message.username}: `}</span>
             <div className="message-list--message no-padding col-lg-9">
               <span className="message-body">{message.body}</span>
               <span className="message-date">
-                {moment(message.time).calendar()}
+                {moment(new Date(message.created)).calendar()}
               </span>
             </div>
           </div>
