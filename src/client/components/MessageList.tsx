@@ -43,7 +43,7 @@ const MessageList = ({ socket }) => {
             <div className="message-list--message no-padding col-lg-9">
               <span className="message-body">{message.body}</span>
               <span className="message-date">
-                {moment(new Date(message.created)).calendar()}
+                {moment(new Date(message.created)).format("lll")}
               </span>
             </div>
           </div>

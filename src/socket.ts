@@ -11,11 +11,9 @@ const messageExpirationTimeMS = 10 * 1000;
 const sendMessage = (socket: Socket | Server) => (message: IMessage) =>
   socket.emit("message", message);
 
-// tslint:disable-next-line: no-var-requires
-const serviceAccountKey = require("./service_account_key_path.json");
 const dbSetting: IDatabaseSetting = {
   project_id: "testproject-835d8",
-  service_account_key: serviceAccountKey,
+  api_key: "AIzaSyDbAQY8fU8WrzGhdXi1gPGR9jIwImXXASE",
   cache_max_age: 20000,
   cache_allocated_memory: 50,
 };
