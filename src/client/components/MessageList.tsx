@@ -1,5 +1,6 @@
 import { Map } from "immutable";
 import React, { SyntheticEvent, useEffect, useState } from "react";
+import moment from "moment";
 
 import "../styles/MessageList.scss";
 
@@ -39,9 +40,12 @@ const MessageList = ({ socket }) => {
             title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
           >
             <span className="message-list--user col-lg-3">{`${message.username}: `}</span>
-            <span className="message-list--message col-lg-9">
-              {message.body}
-            </span>
+            <div className="message-list--message no-padding col-lg-9">
+              <span className="message-body">{message.body}</span>
+              <span className="message-date">
+                {moment(message.time).calendar()}
+              </span>
+            </div>
           </div>
         ))
         .toArray()}

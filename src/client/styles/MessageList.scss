@@ -45,18 +45,26 @@ body {
     .message-list--message {
       flex: 1;
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: flex-start;
-      padding: 5px 10px;
-      border-radius: 4px;
       margin-left: 10px;
-      color: $primary-background;
-      background-color: #cccccc;
-      line-height: 20px;
-      font-size: 1em;
-      word-break: break-all;
 
+      .message-body {
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: $primary-background;
+        background-color: #cccccc;
+        line-height: 20px;
+        font-size: 1em;
+        word-break: break-all;
+        width: 100%;
+      }
+      .message-date {
+        display: flex;
+        align-self: flex-end;
+        font-size: 0.8em;
+      }
       @media (max-width: 1200px) {
         margin-left: 0;
       }
@@ -67,4 +75,9 @@ body {
 .no-margin {
   margin-left: 0;
   margin-right: 0;
+}
+
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
 }
