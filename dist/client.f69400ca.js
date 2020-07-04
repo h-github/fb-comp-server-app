@@ -44058,12 +44058,12 @@ var MessageList = function MessageList(_ref) {
   }).map(function (message) {
     return _react.default.createElement("div", {
       key: message.id,
-      className: "message-list--message-container",
+      className: "message-list--message-container row no-margin",
       title: "Sent at ".concat(new Date(message.time).toLocaleTimeString())
     }, _react.default.createElement("span", {
-      className: "message-list--user"
+      className: "message-list--user col-lg-3"
     }, "".concat(message.username, ": ")), _react.default.createElement("span", {
-      className: "message-list--message"
+      className: "message-list--message col-lg-9"
     }, message.body));
   }).toArray());
 };
@@ -44207,11 +44207,11 @@ var _default = function _default() {
   }, _react.default.createElement("div", {
     className: "row"
   }, _react.default.createElement("div", {
-    className: "col-md-4"
+    className: "col-lg-4"
   }, _react.default.createElement(_NewMessage.default, {
     socket: socket
   })), _react.default.createElement("div", {
-    className: "col-md-6"
+    className: "col-lg-8"
   }, _react.default.createElement(_MessageList.default, {
     socket: socket
   }))));
@@ -44258,7 +44258,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53002" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54677" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

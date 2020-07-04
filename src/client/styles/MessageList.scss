@@ -1,24 +1,70 @@
+$primary-background: #222831;
+
+body {
+  background-color: $primary-background;
+}
+
+#root {
+  margin-top: 30px;
+}
+
+.navbar-light h3.navbar-brand {
+  color: $primary-background;
+}
+
 .message-list {
-  max-width: 500px;
   width: 100%;
 
   .message-list--message-container {
     display: flex;
     font-size: 14px;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    color: #cccccc;
+
+    &:not(:first-child) {
+      margin-top: 5px;
+    }
 
     .message-list--user {
       font-size: 1.1em;
       font-weight: bold;
+      display: flex;
+      flex-direction: column;
       justify-content: flex-end;
+      align-content: flex-start;
+      align-items: flex-start;
+      @media (max-width: 1200px) {
+        justify-content: flex-start;
+        padding-left: 0;
+        padding-bottom: 5px;
+      }
     }
 
     .message-list--message {
       flex: 1;
       display: flex;
+      flex-direction: row;
+      align-items: center;
       justify-content: flex-start;
-      padding-right: 10px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-left: 10px;
+      color: $primary-background;
+      background-color: #cccccc;
+      line-height: 20px;
+      font-size: 1em;
+      word-break: break-all;
+
+      @media (max-width: 1200px) {
+        margin-left: 0;
+      }
     }
   }
+}
+
+.no-margin {
+  margin-left: 0;
+  margin-right: 0;
 }

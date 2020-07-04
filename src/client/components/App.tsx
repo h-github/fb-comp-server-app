@@ -9,10 +9,10 @@ const socket = io(location.origin);
 export default () => (
   <div className="container">
     <div className="row">
-      <div className="col-md-4">
+      <div className="col-lg-4">
         <NewMessage socket={socket} />
       </div>
-      <div className="col-md-6">
+      <div className="col-lg-8">
         <MessageList socket={socket} />
       </div>
     </div>

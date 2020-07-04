@@ -35,11 +35,13 @@ const MessageList = ({ socket }) => {
         .map((message: IMessage) => (
           <div
             key={message.id}
-            className="message-list--message-container"
+            className="message-list--message-container row no-margin"
             title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
           >
-            <span className="message-list--user">{`${message.username}: `}</span>
-            <span className="message-list--message">{message.body}</span>
+            <span className="message-list--user col-lg-3">{`${message.username}: `}</span>
+            <span className="message-list--message col-lg-9">
+              {message.body}
+            </span>
           </div>
         ))
         .toArray()}
