@@ -1,8 +1,7 @@
-import React, { SyntheticEvent, useState } from "react";
-import { Socket } from "socket.io";
+import React, { SyntheticEvent } from "react";
 
 interface IProps {
-  socket: Socket;
+  socket: SocketIOClient.Socket;
 }
 
 interface IState {

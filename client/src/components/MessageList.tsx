@@ -1,13 +1,18 @@
 import { Map } from "immutable";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 
 import "../styles/MessageList.scss";
+import { IMessage } from "../../../src/model/Message";
 
-import { IMessage } from "../../model/Message";
-
-const MessageList = ({ socket, onMessageClick }) => {
-  const [messages, setMessages] = useState(Map());
+const MessageList = ({
+  socket,
+  onMessageClick,
+}: {
+  socket: SocketIOClient.Socket;
+  onMessageClick: (id: string) => void;
+}) => {
+  const [messages, setMessages] = useState(Map<string, IMessage>());
 
   useEffect(() => {
     const messageListener = (message: IMessage) => {
@@ -32,7 +37,7 @@ const MessageList = ({ socket, onMessageClick }) => {
     <div className="message-list">
       {messages
         .toSet()
-        .sortBy((message: IMessage) => message.created)
+        .sortBy<Date>((message: IMessage) => new Date(message.created))
         .map((message: IMessage) => (
           <div
             key={message.id}
@@ -43,7 +48,10 @@ const MessageList = ({ socket, onMessageClick }) => {
             <div className="message-list--message no-padding col-lg-9">
               <span
                 className="message-body"
-                onClick={() => onMessageClick(message.id)}
+                onClick={e => {
+                  e.preventDefault();
+                  onMessageClick(message.id);
+                }}
               >
                 {message.body}
               </span>
