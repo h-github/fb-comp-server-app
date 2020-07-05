@@ -6,8 +6,6 @@ import Database from "nice-fb-api";
 import { IMessage } from "./model/Message";
 import { IDatabaseSetting } from "nice-fb-api/lib/types/databaseSetting";
 
-const messageExpirationTimeMS = 10 * 1000;
-
 const sendMessage = (socket: Socket | Server) => (message: IMessage) =>
   socket.emit("message", message);
 
@@ -19,6 +17,29 @@ const dbSetting: IDatabaseSetting = {
 };
 
 const db = new Database(dbSetting);
+
+// The default cache size threshold is 40 MB. Configure "cacheSizeBytes"
+// for a different threshold (minimum 1 MB) or set to "CACHE_SIZE_UNLIMITED"
+// to disable clean-up.
+db.firestore.settings({
+  cacheSizeBytes: 500000000,
+});
+
+db.firestore.enablePersistence().catch(err => {
+  if (err.code === "failed-precondition") {
+    // Multiple tabs open, persistence can only be enabled
+    // in one tab at a a time.
+
+    // tslint:disable-next-line: no-console
+    console.error("failed-precondition", err);
+  } else if (err.code === "unimplemented") {
+    // The current browser does not support all of the
+    // features required to enable persistence
+
+    // tslint:disable-next-line: no-console
+    console.error("unimplemented", err);
+  }
+});
 
 export default (io: Server) => {
   const messages: Set<IMessage> = new Set();
