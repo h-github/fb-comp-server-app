@@ -2,8 +2,6 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 
-// import Bundler from "parcel-bundler";
-// import path from "path";
 import SocketIOServer from "socket.io";
 import initializeSocketIO from "./socket";
 import initializeFirebase from "./firebase";
@@ -13,8 +11,6 @@ const app = express();
 const server = new http.Server(app);
 const io = SocketIOServer(server);
 const port = process.env.PORT || 8080;
-
-// const bundler = new Bundler(path.join(__dirname, "../src/client/index.html"));
 
 const db = initializeFirebase();
 initializeSocketIO(io, db);
@@ -28,7 +24,6 @@ app.get("/api/messages/:messageId", cors(), (req, res) => {
   });
 });
 
-// app.use(bundler.middleware());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
