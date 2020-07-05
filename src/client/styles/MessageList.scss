@@ -21,10 +21,10 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    color: #cccccc;
+    color: #e9ecef;
 
     &:not(:first-child) {
-      margin-top: 5px;
+      margin-top: 7px;
     }
 
     .message-list--user {
@@ -32,11 +32,9 @@ body {
       font-weight: bold;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      align-content: flex-start;
-      align-items: flex-start;
+      align-items: flex-end;
       @media (max-width: 1200px) {
-        justify-content: flex-start;
+        align-items: flex-start;
         padding-left: 0;
         padding-bottom: 5px;
       }
@@ -54,16 +52,18 @@ body {
         padding: 5px 10px;
         border-radius: 4px;
         color: $primary-background;
-        background-color: #cccccc;
-        line-height: 20px;
+        background-color: #e9ecef;
         font-size: 1em;
+        font-weight: 500;
         word-break: break-all;
         width: 100%;
+        cursor: pointer;
       }
       .message-date {
         display: flex;
         align-self: flex-end;
         font-size: 0.8em;
+        padding-right: 5px;
       }
       @media (max-width: 1200px) {
         margin-left: 0;

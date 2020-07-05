@@ -6,7 +6,7 @@ import "../styles/MessageList.scss";
 
 import { IMessage } from "../../model/Message";
 
-const MessageList = ({ socket }) => {
+const MessageList = ({ socket, onMessageClick }) => {
   const [messages, setMessages] = useState(Map());
 
   useEffect(() => {
@@ -41,7 +41,12 @@ const MessageList = ({ socket }) => {
           >
             <span className="message-list--user col-lg-3">{`${message.username}: `}</span>
             <div className="message-list--message no-padding col-lg-9">
-              <span className="message-body">{message.body}</span>
+              <span
+                className="message-body"
+                onClick={() => onMessageClick(message.id)}
+              >
+                {message.body}
+              </span>
               <span className="message-date">
                 {moment(new Date(message.created)).format("lll")}
               </span>
