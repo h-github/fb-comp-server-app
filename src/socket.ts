@@ -22,7 +22,7 @@ const db = new Database(dbSetting);
 // for a different threshold (minimum 1 MB) or set to "CACHE_SIZE_UNLIMITED"
 // to disable clean-up.
 db.firestore.settings({
-  cacheSizeBytes: 500000000,
+  cacheSizeBytes: 80000000,
 });
 
 db.firestore.enablePersistence().catch(err => {
