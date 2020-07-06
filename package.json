@@ -1,10 +1,10 @@
 {
   "name": "fb-comp-server-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Live Mssaging Service",
   "main": "dist/index.js",
+  "repository": "https://github.com/h-github/fb-comp-server-app",
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
